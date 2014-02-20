@@ -396,7 +396,12 @@ class ResultSetViewSet(viewsets.ViewSet):
             full,
             filter.conditions
         )
-        return Response(self.get_resultsets_with_jobs(jm, objs, full, {}))
+        return Response(self.get_resultsets_with_jobs(
+            jm,
+            objs,
+            full,
+            filter.conditions
+            ))
 
     @with_jobs
     def retrieve(self, request, project, jm, pk=None):

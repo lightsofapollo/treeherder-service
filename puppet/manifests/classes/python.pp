@@ -55,6 +55,18 @@ class python {
     timeout => 1800,
   }
 
+  exec{"pip-install-pure":
+    require => [
+      Exec['create-virtualenv'],
+      File[ "/home/${APP_USER}/pip_cache"],
+      Exec['update-distribute']
+    ],
+    user => "${APP_USER}",
+    cwd => '/tmp',
+    command => "${VENV_DIR}/bin/pip install --download-cache=/home/${APP_USER}/pip_cache -r ${PROJ_DIR}/requirements/pure.txt",
+    timeout => 1800,
+  }
+
   file {"/home/${APP_USER}/pip_cache":
     ensure => directory,
     owner  => "${APP_USER}",

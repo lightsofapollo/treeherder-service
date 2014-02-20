@@ -62,7 +62,8 @@ class JobsModel(TreeherderModelBase):
             "end_timestamp"
         ],
         "result_set": [
-            "id"
+            "id",
+            "result_state"
         ],
         "bug_job_map": [
             "job_id",
